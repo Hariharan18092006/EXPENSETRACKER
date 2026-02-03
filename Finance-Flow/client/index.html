@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A simple Expense Tracker application to manage your personal finances." />
+    <title>Expense Tracker</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Expense Tracker</h1>
+        <p>Keep track of your income and expenses</p>
+      </header>
+
+      <div class="balance-container">
+        <div class="balance-card">
+          <h3>Your Balance</h3>
+          <p id="balance">$0.00</p>
+        </div>
+        <div class="balance-card">
+          <h3>Income</h3>
+          <p id="money-plus" class="money plus">+$0.00</p>
+        </div>
+        <div class="balance-card">
+          <h3>Expense</h3>
+          <p id="money-minus" class="money minus">-$0.00</p>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="form-container">
+          <h3 class="section-title">Add New Transaction</h3>
+          <form id="form">
+            <div class="form-control">
+              <label for="text">Title</label>
+              <input type="text" id="text" placeholder="Enter text (e.g. Salary, Rent)" />
+            </div>
+
+            <div class="form-control">
+              <label for="amount">
+                Amount <br />
+                <small>(negative - expense, positive + income)</small>
+              </label>
+              <input type="number" id="amount" placeholder="Enter amount" step="0.01" />
+            </div>
+
+            <div class="form-control">
+              <label for="category">Category</label>
+              <select id="category">
+                <option value="" disabled selected>Select category</option>
+                <option value="Food">Food</option>
+                <option value="Travel">Travel</option>
+                <option value="Rent">Rent</option>
+                <option value="Bills">Bills</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Salary">Salary</option>
+                <option value="Investment">Investment</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <div class="form-control">
+              <label for="date">Date</label>
+              <input type="date" id="date" />
+            </div>
+
+            <div id="error-msg" class="error-message"></div>
+
+            <button class="btn">Add Transaction</button>
+          </form>
+        </div>
+
+        <div class="history-container">
+          <h3 class="section-title">History</h3>
+          <ul id="list" class="list">
+            <!-- Transactions will be added here dynamically -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

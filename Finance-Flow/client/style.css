@@ -1,0 +1,276 @@
+:root {
+  --bg-color: #f7f9fc;
+  --card-bg: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #777777;
+  --accent-color: #3b82f6;
+  --income-color: #2ecc71;
+  --expense-color: #e74c3c;
+  --border-radius: 12px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  color: var(--text-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+/* Balance Dashboard */
+.balance-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.balance-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  flex: 1;
+  min-width: 200px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.balance-card h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.balance-card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#balance {
+  color: var(--text-primary);
+}
+
+#money-plus {
+  color: var(--income-color);
+}
+
+#money-minus {
+  color: var(--expense-color);
+}
+
+/* Main Content Grid */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add Transaction Form */
+.form-container {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  height: fit-content;
+}
+
+.section-title {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.25rem;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-control input,
+.form-control select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+
+.form-control input:focus,
+.form-control select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.btn {
+  width: 100%;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #2563eb;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Transactions List */
+.history-container {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.list {
+  list-style-type: none;
+}
+
+.list li {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list li:hover {
+  background-color: #f8f9fa;
+}
+
+.list li.plus {
+  border-right: 5px solid var(--income-color);
+}
+
+.list li.minus {
+  border-right: 5px solid var(--expense-color);
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.transaction-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.transaction-amount {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 40px; /* Space for delete button */
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: #fee2e2;
+  color: var(--expense-color);
+  border: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 5px 10px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s, background-color 0.2s;
+  border-radius: 6px;
+}
+
+.list li:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background-color: var(--expense-color);
+  color: white;
+}
+
+/* Utilities */
+.error-message {
+  color: var(--expense-color);
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: none;
+}
+
+.show-error {
+  display: block;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 20px 0;
+  font-style: italic;
+}
